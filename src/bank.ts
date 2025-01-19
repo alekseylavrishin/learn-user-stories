@@ -95,4 +95,16 @@ export class Bank implements BankType {
         account.balance += amountDeposited;
         return account.balance;
     }
+
+    withdrawFromAccount(accountNumber: number, amountToWithdraw: number): number {
+        const account = this.findAccountById(accountNumber);
+        if(!account) {
+            throw new Error('Invalid account number, accountNumber: ' + accountNumber + ' does not exist');
+        }
+        if(amountToWithdraw <= 0 || amountToWithdraw > account.balance) {
+            throw new Error('Invalid withdrawal amount');
+        }
+        account.balance -= amountToWithdraw;
+        return account.balance;
+    }
 }

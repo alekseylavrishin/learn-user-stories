@@ -74,3 +74,40 @@ try {
     console.log("#2 Scenario 3 passed")
 }
 
+console.log("\nTesting #3: Withdraw money from an account")
+// #3 Scenario 1: Successful withdrawal from a valid account
+try {
+    bank.withdrawFromAccount(1234567892, 25);
+    console.log('#3 Scenario 1 passed');
+} catch (e) {
+    console.log('#3 Scenario 1 failed');
+}
+
+// #3 Scenario 2: Unsuccessful withdrawal due to insufficient balance
+try {
+    bank.withdrawFromAccount(1234567892, 125);
+    console.log('#3 Scenario 2 failed');
+} catch (e) {
+    console.log('#3 Scenario 2 passed');
+}
+
+// #3 Scenario 3: Unsuccessful withdrawal due to invalid account number
+try {
+    bank.withdrawFromAccount(9876543210, 10);
+    console.log('#3 Scenario 3 failed');
+} catch (e) {
+    console.log('#3 Scenario 3 passed');
+}
+
+
+// #3 Scenario 4: Unsuccessful withdrawal due negative withdrawal balance
+try {
+    bank.withdrawFromAccount(1234567892, -10);
+    console.log('#3 Scenario 4 failed');
+} catch (e) {
+    console.log('#3 Scenario 4 passed');
+}
+
+
+
+
