@@ -115,4 +115,18 @@ export class Bank implements BankType {
         account.balance -= amountToWithdraw;
         return account.balance;
     }
+
+    /**
+     * Returns the current balance of a valid bank account.
+     * @param accountNumber - The account number associated with the account you wish to check the balance of.
+     *     Must be a valid account number stored in the bank's "accounts" list.
+     * @returns The current balance of the account.
+     */
+    checkBalance(accountNumber: number): number {
+        const account = this.findAccountById(accountNumber);
+        if(!account) {
+            throw new Error('Invalid account number, accountNumber: ' + accountNumber + ' does not exist');
+        }
+        return account.balance;
+    }
 }

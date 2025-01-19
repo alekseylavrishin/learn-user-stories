@@ -109,5 +109,25 @@ try {
 }
 
 
+console.log("\nTesting #4: Check the balance of an account")
+// #4 Scenario 1: Successful balance check for a valid account
+try {
+    if(bank.checkBalance(1234567892) === 75){
+        console.log("#4 Scenario 1 passed")
+    } else {
+        console.log("#4 Scenario 1 failed")
+    }
+} catch (e) {
+    console.log('#4 Scenario 1 failed');
+}
+
+// #4 Scenario 2: Unsuccessful balance check due to invalid account number
+try {
+    bank.checkBalance(9876543210);
+    console.log("#4 Scenario 2 failed")
+} catch (e) {
+    console.log("#4 Scenario 2 passed")
+}
+
 
 
