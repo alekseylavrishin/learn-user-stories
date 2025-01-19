@@ -82,7 +82,7 @@ export class Bank implements BankType {
      * @param accountNumber - The account number associated with the account you wish to deposit an amount into.
      *     Must be a valid account number stored in the bank's "accounts" list.
      * @param amountDeposited - The amount to be deposited in the account. Must be > 0.
-     * @returns - The new balance of the account.
+     * @returns - The new balance of the account after the deposit.
      */
     depositIntoAccount(accountNumber: number, amountDeposited: number) : number {
         if(amountDeposited <= 0) {
@@ -96,6 +96,14 @@ export class Bank implements BankType {
         return account.balance;
     }
 
+    /**
+     * Withdraws a number that is > 0 and <= the total balance of a valid bank account.
+     * @param accountNumber - The account number associated with the account you wish to withdraw an amount from.
+     *     Must be a valid account number stored in the bank's "accounts" list.
+     * @param amountToWithdraw - The amount to be withdrawn from the account. Must be > 0 and
+     *     <= the account's total balance(account.balance).
+     * @returns The new balance of the account after the withdrawal.
+     */
     withdrawFromAccount(accountNumber: number, amountToWithdraw: number): number {
         const account = this.findAccountById(accountNumber);
         if(!account) {
